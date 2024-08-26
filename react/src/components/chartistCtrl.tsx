@@ -1,4 +1,4 @@
-﻿// Converted from src/app/pages/charts/chartist/chartistCtrl.js
+﻿// Converted from src/app/pages/charts/chartist/chartist.html
 
 import React, { useEffect } from 'react';
 import Chartist from 'chartist';
