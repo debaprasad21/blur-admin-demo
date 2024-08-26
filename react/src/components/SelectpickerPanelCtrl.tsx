@@ -1,10 +1,15 @@
-﻿// Converted from src/app/pages/form/inputs/widgets/select/SelectpickerPanelCtrl.js
+﻿// Converted from src/app/pages/form/inputs/widgets/select/select.html
 
 import React, { useState } from 'react';
 import Select from 'react-select';
 
 const SelectpickerPanelCtrl: React.FC = () => {
-  const [disabled, setDisabled] = useState<boolean | undefined>(undefined);
+  const [selectedStandardItem, setSelectedStandardItem] = useState(null);
+  const [selectedWithSearchItem, setSelectedWithSearchItem] = useState(null);
+  const [selectedGroupedItem, setSelectedGroupedItem] = useState(null);
+  const [selectedGroupedByItem, setSelectedGroupedByItem] = useState(null);
+  const [selectedMultipleItems, setSelectedMultipleItems] = useState([]);
+  const [selectedWithDeleteItem, setSelectedWithDeleteItem] = useState([]);
 
   const standardSelectItems = [
     { label: 'Option 1', value: 1 },
@@ -71,17 +76,22 @@ const SelectpickerPanelCtrl: React.FC = () => {
     <div>
       <Select
         options={standardSelectItems}
-        isDisabled={disabled}
-        placeholder="Select an option"
+        value={selectedStandardItem}
+        onChange={setSelectedStandardItem}
+        placeholder="Standard Select"
       />
       <Select
         options={selectWithSearchItems}
+        value={selectedWithSearchItem}
+        onChange={setSelectedWithSearchItem}
         isSearchable
-        placeholder="Search and select"
+        placeholder="Select With Search"
       />
       <Select
         options={groupedSelectItems}
-        placeholder="Select a grouped option"
+        value={selectedGroupedItem}
+        onChange={setSelectedGroupedItem}
+        placeholder="Select With Option Groups"
       />
       <Select
         options={groupedBySelectItems.map(item => ({
@@ -89,17 +99,35 @@ const SelectpickerPanelCtrl: React.FC = () => {
           value: item.name,
           group: someGroupFn(item)
         }))}
-        placeholder="Select by group"
+        value={selectedGroupedByItem}
+        onChange={setSelectedGroupedByItem}
+        placeholder="Select With Option Groups Function"
       />
       <Select
         options={multipleSelectItems}
+        value={selectedMultipleItems}
+        onChange={setSelectedMultipleItems}
         isMulti
-        placeholder="Select multiple options"
+        placeholder="Multiple Select"
       />
-      <Select
-        options={withDeleteSelectItems}
-        placeholder="Select with delete"
-      />
+      <div className="input-group">
+        <Select
+          options={withDeleteSelectItems}
+          value={selectedWithDeleteItem}
+          onChange={setSelectedWithDeleteItem}
+          isMulti
+          placeholder="Select With Clear Button"
+        />
+        <span className="input-group-btn">
+          <button
+            type="button"
+            onClick={() => setSelectedWithDeleteItem([])}
+            className="btn btn-danger"
+          >
+            <span className="glyphicon glyphicon-trash"></span>
+          </button>
+        </span>
+      </div>
     </div>
   );
 };
