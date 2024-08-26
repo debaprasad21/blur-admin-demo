@@ -1,20 +1,21 @@
-﻿// Converted from src/app/pages/components/tree/tree.module.js
+﻿// Converted from src/app/pages/form/form.module.js
 
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import WizardCtrl from '../components/WizardCtrl';
 
-const TreeRouteConfig: React.FC = () => {
+const RouteConfig: React.FC = () => {
   return (
-    <Route
-      path="/tree"
-      component={() => (
-        <div>
-          <h1>Tree View</h1>
-          {/* SECOND AGENT: [MISSING CONTEXT] - The actual component or content for the Tree View needs to be implemented here. */}
-        </div>
-      )}
-    />
+    <Switch>
+      <Route path="/form/inputs">
+        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Form Inputs needs to be implemented here. */}
+      </Route>
+      <Route path="/form/layouts">
+        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Form Layouts needs to be implemented here. */}
+      </Route>
+      <Route path="/form/wizard" component={WizardCtrl} />
+    </Switch>
   );
 };
 
-export default TreeRouteConfig;
+export default RouteConfig;
