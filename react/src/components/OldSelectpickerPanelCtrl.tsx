@@ -1,6 +1,7 @@
-﻿// Converted from src/app/pages/form/inputs/widgets/oldSelect/OldSelectpickerPanelCtrl.js
+﻿// Converted from src/app/pages/form/inputs/widgets/oldSelect/select.html
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Form, FormGroup, FormControl } from 'react-bootstrap';
 
 interface SelectItem {
   label: string;
@@ -9,6 +10,12 @@ interface SelectItem {
 }
 
 const OldSelectpickerPanelCtrl: React.FC = () => {
+  const [standardSelected, setStandardSelected] = useState<SelectItem | null>(null);
+  const [searchSelectedItem, setSearchSelectedItem] = useState<SelectItem | null>(null);
+  const [groupedSelectedItem, setGroupedSelectedItem] = useState<SelectItem | null>(null);
+  const [multipleSelectedItems, setMultipleSelectedItems] = useState<SelectItem[]>([]);
+  const [multipleSelectedItems2, setMultipleSelectedItems2] = useState<SelectItem[]>([]);
+
   const standardSelectItems: SelectItem[] = [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },
@@ -31,9 +38,92 @@ const OldSelectpickerPanelCtrl: React.FC = () => {
   ];
 
   return (
-    <div>
-      {/* Render logic for select items can be added here */}
-    </div>
+    <Form>
+      <FormGroup>
+        <FormControl
+          as="select"
+          className="form-control selectpicker"
+          value={standardSelected?.value || ''}
+          onChange={(e) => {
+            const selectedValue = parseInt(e.target.value, 10);
+            setStandardSelected(standardSelectItems.find(item => item.value === selectedValue) || null);
+          }}
+        >
+          <option value="" disabled>Select an option</option>
+          {standardSelectItems.map(item => (
+            <option key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </FormControl>
+      </FormGroup>
+
+      <FormGroup>
+        <FormControl
+          as="select"
+          className="form-control selectpicker with-search"
+          value={searchSelectedItem?.value || ''}
+          onChange={(e) => {
+            const selectedValue = parseInt(e.target.value, 10);
+            setSearchSelectedItem(selectWithSearchItems.find(item => item.value === selectedValue) || null);
+          }}
+        >
+          <option value="" disabled>Select an option</option>
+          {selectWithSearchItems.map(item => (
+            <option key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </FormControl>
+      </FormGroup>
+
+      <FormGroup>
+        <FormControl
+          as="select"
+          className="form-control"
+          value={groupedSelectedItem?.value || ''}
+          onChange={(e) => {
+            const selectedValue = parseInt(e.target.value, 10);
+            setGroupedSelectedItem(groupedSelectItems.find(item => item.value === selectedValue) || null);
+          }}
+        >
+          <option value="" disabled>Select an option</option>
+          {groupedSelectItems.map(item => (
+            <option key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </FormControl>
+      </FormGroup>
+
+      <FormGroup>
+        <FormControl
+          as="select"
+          className="form-control"
+          multiple
+          value={multipleSelectedItems.map(item => item.value)}
+          onChange={(e) => {
+            const selectedValues = Array.from(e.target.selectedOptions, option => parseInt(option.value, 10));
+            setMultipleSelectedItems(standardSelectItems.filter(item => selectedValues.includes(item.value)));
+          }}
+        >
+          {standardSelectItems.map(item => (
+            <option key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </FormControl>
+      </FormGroup>
+
+      <FormGroup>
+        <FormControl
+          as="select"
+          className="form-control"
+          multiple
+          value={multipleSelectedItems2.map(item => item.value)}
+          onChange={(e) => {
+            const selectedValues = Array.from(e.target.selectedOptions, option => parseInt(option.value, 10));
+            setMultipleSelectedItems2(standardSelectItems.filter(item => selectedValues.includes(item.value)));
+          }}
+        >
+          {standardSelectItems.map(item => (
+            <option key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </FormControl>
+      </FormGroup>
+    </Form>
   );
 };
 
