@@ -1,10 +1,11 @@
-﻿// Converted from src/app/pages/ui/modals/notifications/NotificationsCtrl.js
+﻿// Converted from src/app/pages/ui/modals/notifications/notifications.html
 
 import React from 'react';
 import { toast } from 'react-toastify';
+import { Button } from 'react-bootstrap';
 
 const NotificationsCtrl: React.FC = () => {
-  
+
   const showSuccessMsg = () => {
     toast.success('Your information has been saved successfully!');
   };
@@ -22,11 +23,11 @@ const NotificationsCtrl: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={showSuccessMsg}>Show Success Message</button>
-      <button onClick={showInfoMsg}>Show Info Message</button>
-      <button onClick={showErrorMsg}>Show Error Message</button>
-      <button onClick={showWarningMsg}>Show Warning Message</button>
+    <div className="modal-buttons same-width clearfix">
+      <Button variant="success" onClick={showSuccessMsg}>Success Notification</Button>
+      <Button variant="info" onClick={showInfoMsg}>Info Notification</Button>
+      <Button variant="warning" onClick={showWarningMsg}>Warning Notification</Button>
+      <Button variant="danger" onClick={showErrorMsg}>Danger Notification</Button>
     </div>
   );
 };
