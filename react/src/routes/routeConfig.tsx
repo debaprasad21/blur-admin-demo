@@ -1,4 +1,4 @@
-﻿// Converted from src/app/pages/form/form.module.js
+﻿// Converted from src/app/pages/ui/alerts/alerts.module.js
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -14,6 +14,9 @@ const RouteConfig: React.FC = () => {
         {/* SECOND AGENT: [MISSING CONTEXT] - The component for Form Layouts needs to be implemented here. */}
       </Route>
       <Route path="/form/wizard" component={WizardCtrl} />
+      <Route path="/alerts">
+        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Alerts needs to be implemented here. */}
+      </Route>
     </Switch>
   );
 };
