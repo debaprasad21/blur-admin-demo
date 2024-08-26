@@ -1,4 +1,4 @@
-﻿// Converted from src/app/pages/ui/alerts/alerts.module.js
+﻿// Converted from docs/contents/articles/013-create-new-page/index.md
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -16,6 +16,9 @@ const RouteConfig: React.FC = () => {
       <Route path="/form/wizard" component={WizardCtrl} />
       <Route path="/alerts">
         {/* SECOND AGENT: [MISSING CONTEXT] - The component for Alerts needs to be implemented here. */}
+      </Route>
+      <Route path="/myNewPage">
+        {/* SECOND AGENT: [MISSING CONTEXT] - The component for My New Page needs to be implemented here. */}
       </Route>
     </Switch>
   );
