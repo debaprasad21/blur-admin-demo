@@ -1,4 +1,4 @@
-﻿// Converted from src/app/pages/components/tree/treeCtrl.js
+﻿// Converted from src/app/pages/components/tree/tree.html
 
 import React, { useState, useEffect } from 'react';
 
@@ -214,9 +214,38 @@ const TreeCtrl: React.FC = () => {
   const applyModelChanges = () => !ignoreChanges;
 
   return (
-    <div>
-      {/* Render your tree component here */}
-      {/* Example: <TreeComponent data={treeData} /> */}
+    <div className="row">
+      <div className="col-md-6">
+        <div className="ba-panel ba-panel-title with-scroll tree-panel">
+          <div className="row">
+            <div className="col-sm-4">
+              <div className="control-side text-center">
+                <div>
+                  <button className="btn btn-primary" onClick={addNewNode}>Add</button>
+                </div>
+                <div>
+                  <button className="btn btn-primary" onClick={collapse}>Collapse All</button>
+                </div>
+                <div>
+                  <button className="btn btn-primary" onClick={expand}>Expand All</button>
+                </div>
+                <div>
+                  <button className="btn btn-primary" onClick={refresh}>Refresh</button>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-8">
+              {/* Render your tree component here */}
+              {/* Example: <TreeComponent data={treeData} /> */}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-6">
+        <div className="ba-panel ba-panel-title with-scroll tree-panel">
+          {/* Placeholder for Drag & Drop tree */}
+        </div>
+      </div>
     </div>
   );
 };
