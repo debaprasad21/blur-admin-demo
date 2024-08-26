@@ -1,24 +1,22 @@
-﻿// Converted from docs/contents/articles/013-create-new-page/index.md
+﻿// Converted from src/app/pages/components/mail/mail.module.js
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import WizardCtrl from '../components/WizardCtrl';
+import MailTabCtrl from '../components/MailTabCtrl';
+import MailListCtrl from '../components/MailListCtrl';
+import MailDetailCtrl from '../components/MailDetailCtrl';
 
 const RouteConfig: React.FC = () => {
   return (
     <Switch>
-      <Route path="/form/inputs">
-        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Form Inputs needs to be implemented here. */}
+      <Route path="/mail" exact>
+        <MailTabCtrl />
       </Route>
-      <Route path="/form/layouts">
-        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Form Layouts needs to be implemented here. */}
+      <Route path="/mail/:label" exact>
+        <MailListCtrl />
       </Route>
-      <Route path="/form/wizard" component={WizardCtrl} />
-      <Route path="/alerts">
-        {/* SECOND AGENT: [MISSING CONTEXT] - The component for Alerts needs to be implemented here. */}
-      </Route>
-      <Route path="/myNewPage">
-        {/* SECOND AGENT: [MISSING CONTEXT] - The component for My New Page needs to be implemented here. */}
+      <Route path="/mail/:label/:id" exact>
+        <MailDetailCtrl />
       </Route>
     </Switch>
   );
